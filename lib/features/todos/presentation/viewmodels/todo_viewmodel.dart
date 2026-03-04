@@ -33,7 +33,6 @@ class TodoViewModel extends ChangeNotifier {
   }
 
   Future<void> addTodo(String title) async {
-    // validação mínima fica no VM (ok)
     if (title.trim().isEmpty) {
       errorMessage = 'Título não pode ser vazio.';
       notifyListeners();

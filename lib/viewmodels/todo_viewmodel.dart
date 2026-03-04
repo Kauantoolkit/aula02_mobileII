@@ -4,7 +4,7 @@ import '../repositories/todo_repository_impl.dart';
 import '../models/todo.dart';
 
 class TodoViewModel extends ChangeNotifier {
-  final TodoRepositoryImpl _repo = TodoRepositoryImpl(); // bagunça: impl direto aqui
+  final TodoRepositoryImpl _repo = TodoRepositoryImpl();
 
   bool isLoading = false;
   String? errorMessage;

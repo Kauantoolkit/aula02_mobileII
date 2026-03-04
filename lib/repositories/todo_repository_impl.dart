@@ -9,7 +9,6 @@ class TodoRepositoryImpl implements TodoRepository {
 
   @override
   Future<TodoFetchResult> fetchTodos({bool forceRefresh = false}) async {
-    // neste projeto didático, sempre busca remoto e salva lastSync local
     final models = await _remote.fetchTodos();
     final now = DateTime.now();
     await _local.saveLastSync(now);
@@ -18,7 +17,9 @@ class TodoRepositoryImpl implements TodoRepository {
     final label = lastSync == null ? null : lastSync.toLocal().toString();
 
     return TodoFetchResult(
-      todos: models.map((m) => Todo(id: m.id, title: m.title, completed: m.completed)).toList(),
+      todos: models
+          .map((m) => Todo(id: m.id, title: m.title, completed: m.completed))
+          .toList(),
       lastSyncLabel: label,
     );
   }
@@ -26,7 +27,8 @@ class TodoRepositoryImpl implements TodoRepository {
   @override
   Future<Todo> addTodo(String title) async {
     final created = await _remote.addTodo(title);
-    return Todo(id: created.id, title: created.title, completed: created.completed);
+    return Todo(
+        id: created.id, title: created.title, completed: created.completed);
   }
 
   @override

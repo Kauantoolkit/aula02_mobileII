@@ -15,7 +15,6 @@ class _TodosPageState extends State<TodosPage> {
   @override
   void initState() {
     super.initState();
-    // Carrega ao abrir
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<TodoViewModel>().loadTodos();
     });
@@ -31,7 +30,8 @@ class _TodosPageState extends State<TodosPage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
-            onPressed: vm.isLoading ? null : () => vm.loadTodos(forceRefresh: true),
+            onPressed:
+                vm.isLoading ? null : () => vm.loadTodos(forceRefresh: true),
           )
         ],
       ),

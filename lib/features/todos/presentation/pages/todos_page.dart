@@ -15,7 +15,6 @@ class _TodosPageState extends State<TodosPage> {
   @override
   void initState() {
     super.initState();
-    // Carrega ao abrir
     WidgetsBinding.instance.addPostFrameCallback((_) {
       context.read<TodoViewModel>().loadTodos();
     });
